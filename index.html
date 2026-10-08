@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Blossom Restaurant</title>
+  <!-- <style>
+    :root {
+      --ink: #202124;
+      --muted: #62615d;
+      --line: #e7e0d4;
+      --paper: #fffaf1;
+      --brand: #18865f;
+      --brand-dark: #0e5d42;
+      --gold: #e8a827;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 6%;
+      background: rgba(255, 250, 241, 0.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 38px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .nav-item:hover,
+    .nav-item.active {
+      background: var(--white);
+      color: var(--brand-dark);
+    }
+
+    .nav-item svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex: 0 0 auto;
+    }
+
+    .cart-count {
+      min-width: 18px;
+      height: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: var(--brand);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .hero {
+      min-height: 86vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+      align-items: center;
+      gap: 38px;
+      padding: 48px 6% 36px;
+    }
+
+    .hero h1 {
+      max-width: 620px;
+      margin: 0 0 16px;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 520px;
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 700;
+      border: 1px solid var(--brand);
+    }
+
+    .button.primary {
+      color: var(--white);
+      background: var(--brand);
+    }
+
+    .button.secondary {
+      color: var(--brand-dark);
+      background: transparent;
+    }
+
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 26px 60px rgba(32, 33, 36, 0.18);
+    }
+
+    .hero-photo img,
+    .dish img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    section {
+      padding: 48px 6%;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      max-width: 660px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 8px;
+      font-size: 34px;
+      letter-spacing: 0;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .dish {
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .fav-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--brand-dark);
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(32, 33, 36, 0.14);
+    }
+
+    .fav-button svg {
+      width: 19px;
+      height: 19px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .fav-button.active {
+      color: #cf2e4e;
+    }
+
+    .fav-button.active svg {
+      fill: currentColor;
+    }
+
+    .dish-media {
+      aspect-ratio: 4 / 3;
+      background: #eee6d7;
+    }
+
+    .dish-body {
+      padding: 16px;
+    }
+
+    .dish h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+    }
+
+    .dish p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .price {
+      font-weight: 800;
+      color: var(--brand-dark);
+    }
+
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .mini-button {
+      flex: 1 1 0;
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 8px;
+      border-radius: 8px;
+      border: 1px solid var(--brand);
+      background: transparent;
+      color: var(--brand-dark);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .mini-button.primary {
+      background: var(--brand);
+      color: var(--white);
+    }
+
+    .info-band {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .page-panel {
+      display: none;
+      min-height: 58vh;
+    }
+
+    .page-panel.active {
+      display: block;
+    }
+
+    .simple-list {
+      display: grid;
+      gap: 12px;
+      max-width: 720px;
+    }
+
+    .list-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .list-row strong {
+      display: block;
+    }
+
+    .list-row span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .empty-note {
+      max-width: 520px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--muted);
+    }
+
+    .info {
+      padding: 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .info strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .info span {
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 18px 6%;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 780px) {
+      body {
+        padding-bottom: 82px;
+      }
+
+      .topbar {
+        position: static;
+        display: block;
+      }
+
+      .logo {
+        display: block;
+      }
+
+      .nav {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 20;
+        width: 100%;
+        justify-content: space-between;
+        gap: 4px;
+        padding: 8px 6%;
+        background: rgba(255, 250, 241, 0.97);
+        border-top: 1px solid var(--line);
+        box-shadow: 0 -10px 24px rgba(32, 33, 36, 0.08);
+        backdrop-filter: blur(8px);
+      }
+
+      .nav-item {
+        flex-direction: column;
+        gap: 3px;
+        padding: 6px 4px;
+        font-size: 11px;
+      }
+
+      .nav-item svg {
+        width: 17px;
+        height: 17px;
+      }
+
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        padding-top: 36px;
+      }
+
+      .hero-photo {
+        aspect-ratio: 16 / 11;
+      }
+
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .info-band {
+        grid-template-columns: 1fr;
+      }
+
+      .dish-body {
+        padding: 10px;
+      }
+
+      .dish h3 {
+        font-size: 15px;
+      }
+
+      .dish p {
+        font-size: 12px;
+      }
+
+      .mini-button {
+        min-height: 36px;
+        font-size: 12px;
+      }
+
+      .list-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style> -->
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#">Blossom</a>
+    <nav class="nav" aria-label="Main navigation">
+      <button class="nav-item active" type="button" data-page="home">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11L12 3l9 8"></path><path d="M5 10v10h14V10"></path><path d="M9 20v-6h6v6"></path></svg>
+        <span>Home</span>
+      </button>
+      <button class="nav-item" type="button" data-page="favorites">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+        <span>Favorite</span>
+      </button>
+      <button class="nav-item" type="button" data-page="cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h15l-2 8H8L6 3H3"></path><circle cx="9" cy="20" r="1"></circle><circle cx="18" cy="20" r="1"></circle></svg>
+        <span>Cart</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button class="nav-item" type="button" data-page="profile">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg>
+        <span>Profile</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <div id="homePage">
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Blossom African meals, ready for you.</h1>
+        <p>Order local dishes, rice meals, meat, snacks and drinks. Dine in, take away, or message us for delivery.</p>
+        <div class="actions">
+          <a class="button primary" href="https://wa.me/2348135846600">Order on WhatsApp</a>
+          <a class="button secondary" href="#menu">See Menu</a>
+        </div>
+      </div>
+      <!-- <div class="hero-photo">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80" alt="Fresh restaurant meal with rice, chicken, and vegetables" />
+      </div> -->
+    </section>
+
+    <section id="menu">
+      <div class="section-head">
+        <h2>Popular Meals</h2>
+        <p>A simple food menu for Blossom. Names, prices and photos can be changed anytime.</p>
+      </div>
+      <div class="menu-grid">
+        <article class="dish" data-name="Jollof Rice" data-price="From ₦2,500">
+          <button class="fav-button" type="button" data-favorite="Jollof Rice" aria-label="Add Jollof Rice to favorite">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+          </button>
+          <div class="dish-media">
+            <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=700&q=80" alt="Plate of rice with chicken" />
+          </div>
+          <div class="dish-body">
+            <h3>Jollof Rice</h3>
+            <p>Hot party rice served with chicken and vegetables.</p>
+            <div class="price">From ₦2,500</div>
+            <div class="card-actions">
+              <a class="mini-button primary" href="https://wa.me/2348135846600?text=Hello%2C%20I%20want%20to%20order%20Jollof%20Rice">Buy</a>
+              <button class="mini-button" type="button" data-cart="Jollof Rice" data-price="From ₦2,500">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish" data-name="Grilled Meat" data-price="From ₦3,000">
+          <button class="fav-button" type="button" data-favorite="Grilled Meat" aria-label="Add Grilled Meat to favorite">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+          </button>
+          <div class="dish-media">
+            <img src="https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=700&q=80" alt="Grilled meat meal" />
+          </div>
+          <div class="dish-body">
+            <h3>Grilled Meat</h3>
+            <p>Spicy grilled meat with pepper and onions.</p>
+            <div class="price">From ₦3,000</div>
+            <div class="card-actions">
+              <a class="mini-button primary" href="https://wa.me/2348135846600?text=Hello%2C%20I%20want%20to%20order%20Grilled%20Meat">Buy</a>
+              <button class="mini-button" type="button" data-cart="Grilled Meat" data-price="From ₦3,000">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish" data-name="Cold Drinks" data-price="From ₦800">
+          <button class="fav-button" type="button" data-favorite="Cold Drinks" aria-label="Add Cold Drinks to favorite">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+          </button>
+          <div class="dish-media">
+            <img src="https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=700&q=80" alt="Cold fruit drinks" />
+          </div>
+          <div class="dish-body">
+            <h3>Cold Drinks</h3>
+            <p>Soft drinks and fresh juice for hot afternoons.</p>
+            <div class="price">From ₦800</div>
+            <div class="card-actions">
+              <a class="mini-button primary" href="https://wa.me/2348135846600?text=Hello%2C%20I%20want%20to%20order%20Cold%20Drinks">Buy</a>
+              <button class="mini-button" type="button" data-cart="Cold Drinks" data-price="From ₦800">Add</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="dish" data-name="Soup Meal" data-price="From ₦2,800">
+          <button class="fav-button" type="button" data-favorite="Soup Meal" aria-label="Add Soup Meal to favorite">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+          </button>
+          <div class="dish-media">
+            <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=700&q=80" alt="African soup and swallow meal" />
+          </div>
+          <div class="dish-body">
+            <h3>Soup Meal</h3>
+            <p>Local soup served with swallow and meat.</p>
+            <div class="price">From ₦2,800</div>
+            <div class="card-actions">
+              <a class="mini-button primary" href="https://wa.me/2348135846600?text=Hello%2C%20I%20want%20to%20order%20Soup%20Meal">Buy</a>
+              <button class="mini-button" type="button" data-cart="Soup Meal" data-price="From ₦2,800">Add</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="section-head">
+        <h2>Visit Us</h2>
+        <p>Customers can quickly check your location, time and contact before coming.</p>
+      </div>
+      <div class="info-band">
+        <div class="info">
+          <strong>Location</strong>
+          <span>Patrick Aziza Road, Gesse Phase 1, Birnin Kebbi</span>
+        </div>
+        <div class="info">
+          <strong>Opening Time</strong>
+          <span>Monday to Friday, 8:00 AM - 8:00 PM</span>
+        </div>
+        <div class="info">
+          <strong>Service</strong>
+          <span>Dine in, takeaway and delivery</span>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="page-panel" id="favoritesPage">
+      <div class="section-head">
+        <h2>Favorite Meals</h2>
+        <p>Meals saved with the heart button will show here.</p>
+      </div>
+      <div class="simple-list" id="favoritesList">
+        <div class="empty-note">No favorite meal yet. Tap the heart on any food card.</div>
+      </div>
+    </section>
+
+    <section class="page-panel" id="cartPage">
+      <div class="section-head">
+        <h2>Your Cart</h2>
+        <p>Meals added from the menu will show here before checkout.</p>
+      </div>
+      <div class="simple-list" id="cartList">
+        <div class="empty-note">Your cart is empty. Tap Add on a food card.</div>
+      </div>
+    </section>
+
+    <section class="page-panel" id="profilePage">
+      <div class="section-head">
+        <h2>Blossom Profile</h2>
+        <p>Business details customers can check before ordering.</p>
+      </div>
+      <div class="info-band">
+        <div class="info">
+          <strong>Phone</strong>
+          <span>+234 813 584 6600</span>
+        </div>
+        <div class="info">
+          <strong>Food</strong>
+          <span>African dishes, rice, meat and drinks</span>
+        </div>
+        <div class="info">
+          <strong>Orders</strong>
+          <span>Dine in, takeaway and delivery</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Blossom Restaurant. Sample website by Jereih.
+  </footer>
+<script src="script.js"></script>
+
+
+  <!-- <script>
+    const cartCount = document.getElementById("cartCount");
+    const cartList = document.getElementById("cartList");
+    const favoritesList = document.getElementById("favoritesList");
+    const cartItems = [];
+    const favoriteItems = new Set();
+    let count = 0;
+
+    document.querySelectorAll("[data-cart]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.dataset.cart;
+        const price = button.dataset.price;
+        cartItems.push({ item, price });
+        count += 1;
+        cartCount.textContent = count;
+        button.textContent = "Added";
+        renderCart();
+      });
+    });
+
+    document.querySelectorAll("[data-favorite]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.dataset.favorite;
+        button.classList.toggle("active");
+
+        if (favoriteItems.has(item)) {
+          favoriteItems.delete(item);
+        } else {
+          favoriteItems.add(item);
+        }
+
+        renderFavorites();
+      });
+    });
+
+    document.querySelectorAll("[data-page]").forEach((button) => {
+      button.addEventListener("click", () => {
+        showPage(button.dataset.page);
+      });
+    });
+
+    function showPage(page) {
+      document.querySelectorAll("[data-page]").forEach((button) => {
+        button.classList.toggle("active", button.dataset.page === page);
+      });
+
+      document.getElementById("homePage").style.display = page === "home" ? "block" : "none";
+      document.querySelectorAll(".page-panel").forEach((panel) => {
+        panel.classList.remove("active");
+      });
+
+      if (page !== "home") {
+        document.getElementById(`${page}Page`).classList.add("active");
+      }
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderFavorites() {
+      if (!favoriteItems.size) {
+        favoritesList.innerHTML = '<div class="empty-note">No favorite meal yet. Tap the heart on any food card.</div>';
+        return;
+      }
+
+      favoritesList.innerHTML = Array.from(favoriteItems).map((item) => (
+        `<div class="list-row"><div><strong>${item}</strong><span>Saved meal</span></div><a class="mini-button primary" href="https://wa.me/2348135846600?text=Hello%2C%20I%20want%20to%20order%20${encodeURIComponent(item)}">Buy</a></div>`
+      )).join("");
+    }
+
+    function renderCart() {
+      if (!cartItems.length) {
+        cartList.innerHTML = '<div class="empty-note">Your cart is empty. Tap Add on a food card.</div>';
+        return;
+      }
+
+      cartList.innerHTML = cartItems.map(({ item, price }) => (
+        `<div class="list-row"><div><strong>${item}</strong><span>${price}</span></div><a class="mini-button primary" href="https://wa.me/2348135846600?text=Hello%2C%20I%20want%20to%20order%20${encodeURIComponent(item)}">Buy</a></div>`
+      )).join("");
+    }
+  </script> -->
+</body>
+</html>
