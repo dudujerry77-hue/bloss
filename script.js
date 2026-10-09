@@ -62,7 +62,7 @@
       }
 
       favoritesList.innerHTML = Array.from(favoriteItems).map((item) => (
-        `<div class="list-row"><div><strong>${item}</strong><span>Saved meal</span></div><a class="mini-button primary" href="https://wa.me/2348135846600?text=Hello%2C%20I%20want%20to%20order%20${encodeURIComponent(item)}">Buy</a></div>`
+        `<div class="list-row"><div><strong>${item}</strong><span>Saved meal</span></div><a class="mini-button primary" href="https://wa.me/2348083252950?text=Hello%2C%20I%20want%20to%20order%20${encodeURIComponent(item)}">Buy</a></div>`
       )).join("");
     }
     function renderCart() {
@@ -72,6 +72,6 @@
       }
 
       cartList.innerHTML = cartItems.map(({ item, price }) => (
-        `<div class="list-row"><div><strong>${item}</strong><span>${price}</span></div><a class="mini-button primary" href="https://wa.me/2348135846600?text=Hello%2C%20I%20want%20to%20order%20${encodeURIComponent(item)}">Buy</a></div>`
+        `<div class="list-row"><div><strong>${item}</strong><span>${price}</span></div><a class="mini-button primary" href="https://wa.me/2348083252950?text=Hello%2C%20I%20want%20to%20order%20${encodeURIComponent(item)}">Buy</a></div>`
       )).join("");
     }
